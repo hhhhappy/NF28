@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="TD03.TD03Controller">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="299.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints maxHeight="195.0" minHeight="9.0" prefHeight="90.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="476.0" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="TD03 - Formulaire de contacts" />
+            <TitledPane animated="false" prefHeight="68.0" prefWidth="600.0" text="Nom et Prénom">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="52.0" prefWidth="598.0">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="-1.0" layoutY="-32.0" prefHeight="78.0" prefWidth="600.0" spacing="30.0">
+                           <children>
+                              <TextField fx:id="lastname" prefHeight="25.0" prefWidth="253.0">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                              <TextField fx:id="firstname" prefHeight="25.0" prefWidth="276.0" />
+                           </children>
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+         </children>
+      </VBox>
+      <TitledPane animated="false" prefHeight="179.0" prefWidth="600.0" text="Adresse" GridPane.rowIndex="1">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="598.0">
+               <children>
+                  <GridPane layoutX="88.0" maxHeight="227.0" prefHeight="146.0" prefWidth="427.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                           <children>
+                              <Label text="Ville : " />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" text="Numéro et libellé de la voie : " />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="Code Postal : " />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="67.0" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                           <children>
+                              <Label text="Pays : " />
+                           </children>
+                        </HBox>
+                        <TextField fx:id="nostreet" GridPane.columnIndex="1" />
+                        <TextField fx:id="pc" prefHeight="25.0" prefWidth="156.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="city" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="country" prefHeight="25.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="10.0" layoutY="92.0" prefHeight="108.0" prefWidth="600.0" text="Données personelles" GridPane.rowIndex="2">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="598.0">
+               <children>
+                  <GridPane layoutX="88.0" maxHeight="227.0" prefHeight="87.0" prefWidth="427.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label contentDisplay="RIGHT" text="Date de naissance : " />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="124.0" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label text="Sexe : " />
+                           </children>
+                        </HBox>
+                        <DatePicker fx:id="birthday" prefHeight="25.0" prefWidth="216.0" GridPane.columnIndex="1" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <RadioButton fx:id="radiof" lineSpacing="100.0" mnemonicParsing="false" selected="true" text="F">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="sexradio" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="radiom" mnemonicParsing="false" text="M" toggleGroup="$sexradio" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="10.0" layoutY="278.0" prefHeight="69.0" prefWidth="600.0" text="Groupe" GridPane.rowIndex="3">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="49.0" prefWidth="598.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" layoutX="3.0" layoutY="1.0" prefHeight="46.0" prefWidth="594.0">
+                     <children>
+                        <ComboBox fx:id="group" prefHeight="28.0" prefWidth="318.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+         <children>
+            <Button fx:id="buttonsave" mnemonicParsing="false" text="Sauvegarder">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</GridPane>
