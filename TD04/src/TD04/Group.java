@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 
 public class Group implements Externalizable {
 	private StringProperty groupName = new SimpleStringProperty(null, "", "new group");;
-	ObservableList<Contact> contacts = FXCollections.observableArrayList();;
+	public ObservableList<Contact> contacts = FXCollections.observableArrayList();;
 	
 	public StringProperty getNameProperty() {
 		return groupName;

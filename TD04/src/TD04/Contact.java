@@ -20,8 +20,13 @@ public class Contact implements Externalizable {
 		private String sex = "";
 		private Group group = null;
 		
+		public Contact() {	//need a empty constructor for the IoStream
+		}
 		public Contact(Group grp) {
 			group = grp;
+		}
+		public void setGroup(Group grp) {
+			this.group = grp;
 		}
 		
 		public String getNoStreet() {

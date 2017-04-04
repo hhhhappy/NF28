@@ -168,6 +168,7 @@ public class TD04Model {
 			groups.clear();
 			for (Object obj : objs) {	
 				groups.add((Group)obj);
+				System.out.println(((Group)obj).contacts.size());
 			}
 			ois.close();
 		} catch(IOException e) {

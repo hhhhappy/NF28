@@ -77,6 +77,10 @@ public class TD04Controller {
 	
 	// current tree item
 	TreeItem<Object> currentItem = null;
+	// parent of currentItem
+	TreeItem<Object> parentItem = null;
+	//root of the tree
+	TreeItem<Object> rootNode = null;
 	
 	public TD04Controller() {
 		model =  new TD04Model();
@@ -91,7 +95,9 @@ public class TD04Controller {
 		country.setItems(Country.getCountryNameList());
 		
 		// set tree root
-		TreeItem<Object> rootNode = new TreeItem<>();
+		rootNode = new TreeItem<>();
+		parentItem = rootNode;	//set parent item
+		currentItem = rootNode;	//set current item as root 
 		rootNode.setValue("Fiche de contacte");
 		rootNode.setExpanded(true);
 		treegroup.setRoot(rootNode);
@@ -120,6 +126,12 @@ public class TD04Controller {
 							+ newValue +
 							" " + newValue.getClass().getName());
 					currentItem = newValue;
+					if(currentItem.equals(rootNode)) {
+						parentItem = rootNode;
+					}
+					else {
+						parentItem = currentItem.getParent();
+					}
 				});
 		
 		//////////////////////////////////////////////
@@ -141,6 +153,8 @@ public class TD04Controller {
 		buttondelete.setOnAction(evt -> model.delete(currentItem));
 		save.setOnAction(evt -> model.save());
 		load.setOnAction(evt -> {
+			currentItem = rootNode;
+			parentItem = rootNode;
 			FileChooser fc = new FileChooser();
 			fc.setTitle("Load File");
 			File selectedFile = fc.showOpenDialog(new Stage());
@@ -190,12 +204,25 @@ public class TD04Controller {
 				changed.getAddedSubList().forEach(item -> {
 						addTreeItem(item);
 						item.contacts.addListener(contactListListener);	
+						if(item.contacts.size()!=0){
+							//when load a file, add all the contact items
+							for(Contact c : item.contacts){
+								addTreeItem(c, item);
+							}
+						}
 					}
 				);
 			}
 			
 			if (changed.wasRemoved()) {
-				changed.getRemoved().forEach(item -> removeCurrentTreeItem());
+				if(model.groups.size() == 0){
+					//resolve the problem witch happened when clear the list of groups
+					//treeView wasn't cleared 
+					parentItem.getChildren().clear();
+				}
+				else{
+					changed.getRemoved().forEach(item -> removeCurrentTreeItem());
+				}
 			}
 		};
 		model.groups.addListener(groupListListener);
@@ -269,9 +296,22 @@ public class TD04Controller {
 		TreeItem<Object> contactItem = new TreeItem<Object>(contact, new ImageView(contactIcon));
 		currentItem.getChildren().add(contactItem);
 	}
+	private void addTreeItem(Contact contact, Group grp) {
+		//add contact by using his group
+		TreeItem<Object> contactItem = new TreeItem<Object>(contact, new ImageView(contactIcon));
+		TreeItem<Object> groupItem = null;
+		for(TreeItem<Object> g : rootNode.getChildren()){
+			if(((Group)g.getValue()).equals(grp)){
+				groupItem = g;
+				break;
+			}
+		}
+		contact.setGroup(grp);	//set parent group for each contact
+		groupItem.getChildren().add(contactItem);
+	}
 	
 	private void removeCurrentTreeItem() {
-		currentItem.getParent().getChildren().remove(currentItem);
+		parentItem.getChildren().remove(currentItem);
 	}
 		
     private final class TextFieldTreeCellImpl extends TreeCell<Object> {
