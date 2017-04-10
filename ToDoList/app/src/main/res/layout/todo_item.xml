@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableRow>
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:id="@+id/taskName"
+        android:gravity="left|center_vertical"
+        android:layout_weight="0.3"/>
+
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:id="@+id/status"
+        android:gravity="left|center_vertical"
+        android:layout_weight="0.2"/>
+
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:id="@+id/priority"
+        android:gravity="right|center_vertical"
+        android:layout_weight="0.25"/>
+
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:id="@+id/deadline"
+        android:gravity="right|center_vertical"
+        android:layout_weight="0.25"/>
+    </TableRow>
+</TableLayout>
