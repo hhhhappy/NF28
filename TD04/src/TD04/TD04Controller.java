@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -18,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeItem.TreeModificationEvent;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -146,8 +148,10 @@ public class TD04Controller {
 		radiof.setOnAction(evt -> model.setSex("F"));
 		radiom.setOnAction(evt -> model.setSex("M"));
 		buttonvalidate.setOnAction(evt -> {
-			if (model.validate((Contact)currentItem.getValue()))
-				;//currentItem.get
+			if (model.validate((Contact)currentItem.getValue())){
+				TreeModificationEvent<Object> event = new  TreeModificationEvent<>(TreeItem.valueChangedEvent(), currentItem);
+				Event.fireEvent(currentItem, event);
+			}
 		});
 		buttonadd.setOnAction(evt -> model.create(currentItem));
 		buttondelete.setOnAction(evt -> model.delete(currentItem));
